@@ -3,7 +3,7 @@
 
 struct command_entry {
     const char * name;
-    void (*cmd)(void);
+    void (*cmd)(const char *);
 };
 
 typedef struct command_entry command_t;
@@ -25,7 +25,7 @@ int main(){
         command_t * iter = commands;
         while(iter->name != NULL){
             if(strncmp(iter->name, input, strlen(iter->name)) == 0){
-                iter->cmd();
+                iter->cmd(input);
                 break;
             }
         }

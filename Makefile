@@ -16,3 +16,6 @@ all: ${OBJS}
 
 clean:
 	rm -rvf ${OBJS} ${OUTPUT}
+
+format:
+	clang-format -i -style=file ${SRCS}

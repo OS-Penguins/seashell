@@ -16,15 +16,15 @@ int main() {
 
     puts("Welcome to SeaShell\nPress Ctrl-C or Ctrl-D to exit");
 
-    char input[INPUT_BUFFER_SIZE];
+    char input_buffer[INPUT_BUFFER_SIZE];
 
-    while (fgets(input, INPUT_BUFFER_SIZE, stdin) != NULL) {
+    while (fgets(input_buffer, INPUT_BUFFER_SIZE, stdin) != NULL) {
 
         // iter is the iterator which walks over the list of available commands
         command_t * iter = commands;
         while (iter->name != NULL) {
-            if (strncmp(iter->name, input, strlen(iter->name)) == 0) {
-                iter->cmd(input);
+            if (strncmp(iter->name, input_buffer, strlen(iter->name)) == 0) {
+                iter->cmd(input_buffer);
                 break;
             }
 

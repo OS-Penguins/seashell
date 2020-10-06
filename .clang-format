@@ -19,5 +19,4 @@ IncludeCategories:
   - Regex: '<[[:alnum:].]+>'
     Priority: 2
 
-Language: Cpp
 MaxEmptyLinesToKeep: 1

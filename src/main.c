@@ -20,12 +20,15 @@ int main() {
 
     while (fgets(input, INPUT_BUFFER_SIZE, stdin) != NULL) {
 
+        // iter is the iterator which walks over the list of available commands
         command_t * iter = commands;
         while (iter->name != NULL) {
             if (strncmp(iter->name, input, strlen(iter->name)) == 0) {
                 iter->cmd(input);
                 break;
             }
+
+            iter++;
         }
 
         // We reach the end of the array without finding a command

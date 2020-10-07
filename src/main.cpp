@@ -29,13 +29,13 @@ int main() {
     std::string buffer;
 
     while (std::getline(std::cin, buffer)) {
-
-        if (const auto cmd = commands.find(first_word(buffer)); cmd != commands.end()) {
+        const auto command_to_run = first_word(buffer);
+        if (const auto cmd = commands.find(command_to_run); cmd != commands.end()) {
             // Found a builtin command
             cmd->second(buffer);
         } else {
             // Could not find a command
-            puts("Unrecognized command.");
+            std::cerr << "Unrecognized command: " << command_to_run << '\n';
         }
     }
 }

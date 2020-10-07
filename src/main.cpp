@@ -1,4 +1,3 @@
-#include <cstdio> // puts
 #include <functional>
 #include <iostream> // cin
 #include <map>

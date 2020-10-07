@@ -11,8 +11,8 @@ OUTPUT=seashell
 all: ${OBJS}
 	${CC} ${CFLAGS} $^ -o ${OUTPUT}
 
-%.o: %.c
-	${CC} -c -o $@ ${CFLAGS} $^
+%.o: %.cpp
+	${CC} ${CFLAGS} -c $^ -o $@
 
 clean:
 	rm -rvf ${OBJS} ${OUTPUT}

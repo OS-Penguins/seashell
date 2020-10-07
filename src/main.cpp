@@ -1,37 +1,41 @@
-#include <stdio.h>  //puts
-#include <string.h> //strncmp
+#include <cstdio> // puts
+#include <functional>
+#include <iostream> // cin
+#include <map>
+#include <string> // getline
 
-struct command_entry {
-    const char * name;
-    void (*cmd)(const char *);
-};
+using command = std::function<void(const std::string &)>;
 
-typedef struct command_entry command_t;
+static const std::map<std::string, command> commands{};
 
-static command_t commands[] = {{NULL, NULL}};
+static std::string first_word(const std::string & input) {
+    static constexpr auto * whitespace = " \t\n\v\f";
 
-#define INPUT_BUFFER_SIZE 1024
+    const auto start_of_first_word = input.find_first_not_of(whitespace);
+
+    // Only whitespace characters were found -> return ""
+    if (start_of_first_word == std::string::npos) return "";
+
+    const auto end_of_first_word = input.find_first_of(whitespace, start_of_first_word);
+
+    // The entire buffer is one word -> return the entire buffer
+    return end_of_first_word == std::string::npos ? input : input.substr(end_of_first_word);
+}
 
 int main() {
 
     puts("Welcome to SeaShell\nPress Ctrl-C or Ctrl-D to exit");
 
-    char input_buffer[INPUT_BUFFER_SIZE];
+    std::string buffer;
 
-    while (fgets(input_buffer, INPUT_BUFFER_SIZE, stdin) != NULL) {
+    while (std::getline(std::cin, buffer)) {
 
-        // iter is the iterator which walks over the list of available commands
-        command_t * iter = commands;
-        while (iter->name != NULL) {
-            if (strncmp(iter->name, input_buffer, strlen(iter->name)) == 0) {
-                iter->cmd(input_buffer);
-                break;
-            }
-
-            iter++;
+        if (const auto cmd = commands.find(first_word(buffer)); cmd != commands.end()) {
+            // Found a builtin command
+            cmd->second(buffer);
+        } else {
+            // Could not find a command
+            puts("Unrecognized command.");
         }
-
-        // We reach the end of the array without finding a command
-        if (iter->name == NULL) { puts("Unrecognized command"); }
     }
 }

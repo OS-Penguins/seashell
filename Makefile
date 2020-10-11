@@ -1,18 +1,18 @@
-CC=gcc
-CFLAGS=-Wall -Wextra
+CC=g++
+CFLAGS=-Wall -Wextra -std=c++17 -O2
 
 .PHONY = all clean
 
-SRCS := $(wildcard src/*.c)
-OBJS := $(SRCS:%.c=%.o)
+SRCS := $(wildcard src/*.cpp)
+OBJS := $(SRCS:%.cpp=%.o)
 
 OUTPUT=seashell
 
 all: ${OBJS}
 	${CC} ${CFLAGS} $^ -o ${OUTPUT}
 
-%.o: %.c
-	${CC} -c -o $@ ${CFLAGS} $^
+%.o: %.cpp
+	${CC} ${CFLAGS} -c $^ -o $@
 
 clean:
 	rm -rvf ${OBJS} ${OUTPUT}

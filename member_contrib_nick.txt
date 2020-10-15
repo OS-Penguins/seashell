@@ -1,1 +1,2 @@
 - Basic framework in main.c
+- ls command

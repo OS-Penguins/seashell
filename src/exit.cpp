@@ -1,17 +1,9 @@
 #include "commands.h"
 
-
-#include <string>
 #include <iostream>
-
-
+#include <string>
 
 namespace seashell {
 
-void exit(const std::string &)
-{
-	exit(0);
-
-}
-}
-
+void exit(const std::string &) { exit(0); }
+} // namespace seashell

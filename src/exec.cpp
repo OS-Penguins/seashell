@@ -44,16 +44,17 @@ bool exec(const std::string & command) {
             case '"':
             case '\'':
                 if (c == quote_type) quote_type = none;
-                [[fallthrough]];
+                break;
             default:
                 arguments.back() += c;
                 break;
             }
         } else if (isspace(c)) {
             if (not arguments.back().empty()) arguments.emplace_back();
-        } else {
+        } else if (c == '\'' or c == '"')
+            quote_type = static_cast<quote_type_t>(c);
+        else {
             arguments.back() += c;
-            if (c == '\'' or c == '"') quote_type = static_cast<quote_type_t>(c);
         }
     }
 

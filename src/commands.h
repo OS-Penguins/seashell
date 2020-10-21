@@ -5,6 +5,9 @@
 
 namespace seashell {
     void ls(const std::string &);
+
+    // Exec is special
+    bool exec(const std::string &);
 }
 
 #endif

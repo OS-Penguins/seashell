@@ -43,8 +43,11 @@ bool exec(const std::string & command) {
                 break;
             case '"':
             case '\'':
-                if (c == quote_type) quote_type = none;
-                break;
+                if (c == quote_type) {
+                    quote_type = none;
+                    break;
+                } else
+                    [[fallthrough]];
             default:
                 arguments.back() += c;
                 break;

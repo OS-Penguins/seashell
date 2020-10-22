@@ -18,9 +18,10 @@ bool exec(const std::string & command) {
 
     bool escaped = false; // true if last character is a '\'
 
+    // Preprocessing loop
     for (char c : command) {
         if (c == '\\') escaped = true;
-        else if (escaped) {
+        else if (escaped) 
             // Appended the correct version onto the end of the arguments
             switch (c) {
             case '"':
@@ -36,7 +37,7 @@ bool exec(const std::string & command) {
                 break;
             }
             escaped = false;
-        } else if (quote_type != none) {
+         else if (quote_type != none)
             switch (c) {
             case '\\':
                 escaped = true;
@@ -52,11 +53,14 @@ bool exec(const std::string & command) {
                 arguments.back() += c;
                 break;
             }
-        } else if (isspace(c)) {
+        else if (isspace(c)) {
+            // Reached the end of one argument
+            // Add a new argument if the argument we just finished has something in it.
             if (not arguments.back().empty()) arguments.emplace_back();
         } else if (c == '\'' or c == '"')
             quote_type = static_cast<quote_type_t>(c);
         else {
+            // Simple append
             arguments.back() += c;
         }
     }

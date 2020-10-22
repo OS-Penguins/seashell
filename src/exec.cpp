@@ -85,8 +85,9 @@ bool exec(const std::string & command) {
     }
 
     int status;
-    if (const auto ret = waitpid(pid, &status, 0); ret == pid) return true;
-    else if (ret == -1) {
+    if (const auto ret = waitpid(pid, &status, 0); ret == pid) {
+        if (status != 0) printf("Status %d\n", status);
+    } else if (ret == -1) {
         return false;
     }
 

@@ -21,7 +21,9 @@ static std::string first_word(const std::string & input) {
     const auto end_of_first_word = input.find_first_of(whitespace, start_of_first_word);
 
     // The entire buffer is one word -> return the entire buffer
-    return end_of_first_word == std::string::npos ? input : input.substr(end_of_first_word);
+    return end_of_first_word == std::string::npos
+               ? input
+               : input.substr(start_of_first_word, end_of_first_word - start_of_first_word);
 }
 
 int main() {

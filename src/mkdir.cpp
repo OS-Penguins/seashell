@@ -9,14 +9,11 @@ void sub1(const std::string & input);
 void seashell::mkdir(const std::string & input) {
     std::string foldername;
     for (auto i = input.find("r") + 1; i < input.size(); i++) {
-        auto character = input.at(i);
-        if (isspace(character)) {
-            if (not foldername.empty()) {
-                sub1(foldername);
-                foldername.clear();
-            }
-        } else {
+        if(auto character = input.at(i); not isspace(character)) {
             foldername += character;
+        } else if (not foldername.empty()) {
+            sub1(foldername);
+            foldername.clear();
         }
     }
     if (not foldername.empty()) { sub1(foldername); }

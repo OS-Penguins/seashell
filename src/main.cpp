@@ -37,7 +37,7 @@ int main() {
         if (const auto cmd = commands.find(command_to_run); cmd != commands.end()) {
             // Found a builtin command
             cmd->second(buffer);
-        } else {
+        } else if (not seashell::exec(buffer)) {
             // Could not find a command
             std::cerr << "Unrecognized command: " << command_to_run << '\n';
         }

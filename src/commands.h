@@ -5,6 +5,7 @@
 
 namespace seashell {
     void ls(const std::string &);
+    void mkdir(const std::string& input);
 }
 
 #endif

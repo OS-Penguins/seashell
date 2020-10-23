@@ -5,7 +5,7 @@
 #include <cctype>
 
 // sub-function made to differ the mkdir() functions
-void sub1(const std::string & input) {
+static void sub1(const std::string & input) {
     if (mkdir(input.c_str(), S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH) == -1)
         perror("mkdir");
 }

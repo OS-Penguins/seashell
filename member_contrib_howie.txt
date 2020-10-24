@@ -1,1 +1,3 @@
-- made mkdir 
+- made mkdir
+
+- made pwd 

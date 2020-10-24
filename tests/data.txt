@@ -1,0 +1,4 @@
+This is some test data.
+It should be copied correctly.
+
+Hello.

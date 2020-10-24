@@ -7,8 +7,8 @@
 
 using command = std::function<void(const std::string &)>;
 
-static const std::map<std::string, command> commands{{"ls", seashell::ls},
-                                                     {"mkdir", seashell::mkdir}};
+static const std::map<std::string, command> commands{
+    {"ls", seashell::ls}, {"mkdir", seashell::mkdir}, {"cp", seashell::copy}};
 
 static std::string first_word(const std::string & input) {
     static constexpr auto * whitespace = " \t\n\v\f";

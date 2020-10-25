@@ -6,6 +6,7 @@
 namespace seashell {
     void ls(const std::string &);
     void mkdir(const std::string&);
+    void copy(const std::string &);
     void rmdir(const std::string&);
     // Exec is special
     bool exec(const std::string &);

@@ -6,4 +6,5 @@
 void seashell::pwd(const std::string &) {
     auto * dir_name = get_current_dir_name();
     puts(dir_name);
+    free(dir_name);
 }

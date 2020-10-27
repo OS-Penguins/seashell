@@ -10,7 +10,7 @@ using command = std::function<void(const std::string &)>;
 static const std::map<std::string, command> commands{
     {"ls", seashell::ls},     {"mkdir", seashell::mkdir}, {"cp", seashell::copy},
     {"pwd", seashell::pwd},   {"rmdir", seashell::rmdir}, {"cd", seashell::cd},
-    {"exit", seashell::exit}, {"help", seashell::help},
+    {"exit", seashell::exit}, {"help", seashell::help},   {"talari", seashell::talari},
 };
 
 static std::string first_word(const std::string & input) {

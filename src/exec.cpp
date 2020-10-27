@@ -74,7 +74,7 @@ bool exec(const std::string & command) {
 
         if (execvp(argv[0], argv.data()) == -1) {
             perror("exec");
-            exit(-1);
+            ::exit(-1);
         }
         // Should never get to here, as exec replaces our code with the invoked program
 

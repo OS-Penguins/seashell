@@ -10,6 +10,9 @@ namespace seashell {
     void copy(const std::string &);
     void rmdir(const std::string&);
     void cd(const std::string&);
+    void help(const std::string&);
+    void exit(const std::string&);
+
     // Exec is special
     bool exec(const std::string &);
 }

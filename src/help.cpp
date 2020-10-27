@@ -12,7 +12,7 @@ void help(const std::string &) {
                  "pwd - print working directory\n"
                  "cd <directory> - changes current directory to <directory>\n"
                  "mkdir/rmdir <directory> - creates or deletes <directory>\n"
-                 "cp - copy a file\n" 
+                 "cp - copy a file\n"
                  "Talari - :)"
               << std::endl;
 }

@@ -14,8 +14,7 @@ void seashell::cd(const std::string & input) {
 
     auto end_path = input.find_last_not_of(" \t\n\r\v");
 
-    auto directory = input.substr(start_path, end_path+1 - start_path);
+    auto directory = input.substr(start_path, end_path + 1 - start_path);
 
-    if(chdir(directory.c_str()))
-	    perror("cd");
+    if (chdir(directory.c_str())) perror("cd");
 }

@@ -12,7 +12,7 @@ namespace seashell {
     void cd(const std::string&);
     void help(const std::string&);
     void exit(const std::string&);
-
+    void talari(const std::string&);
     // Exec is special
     bool exec(const std::string &);
 }

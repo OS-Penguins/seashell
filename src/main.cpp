@@ -1,3 +1,5 @@
+#include "commands.h"
+
 #include <functional>
 #include <iostream> // cin
 #include <map>
@@ -5,7 +7,14 @@
 
 using command = std::function<void(const std::string &)>;
 
-static const std::map<std::string, command> commands{};
+static const std::map<std::string, command> commands{{"ls", seashell::ls},
+                                                     {"mkdir", seashell::mkdir},
+                                                     {"cp", seashell::copy},
+                                                     {"rmdir", seashell::rmdir},
+													 {"cd", seashell::cd},
+													 {"exit", seashell::exit},
+													 {"help", seashell::help},
+													 };
 
 static std::string first_word(const std::string & input) {
     static constexpr auto * whitespace = " \t\n\v\f";
@@ -18,7 +27,9 @@ static std::string first_word(const std::string & input) {
     const auto end_of_first_word = input.find_first_of(whitespace, start_of_first_word);
 
     // The entire buffer is one word -> return the entire buffer
-    return end_of_first_word == std::string::npos ? input : input.substr(end_of_first_word);
+    return end_of_first_word == std::string::npos
+               ? input
+               : input.substr(start_of_first_word, end_of_first_word - start_of_first_word);
 }
 
 int main() {
@@ -32,7 +43,7 @@ int main() {
         if (const auto cmd = commands.find(command_to_run); cmd != commands.end()) {
             // Found a builtin command
             cmd->second(buffer);
-        } else {
+        } else if (not seashell::exec(buffer)) {
             // Could not find a command
             std::cerr << "Unrecognized command: " << command_to_run << '\n';
         }

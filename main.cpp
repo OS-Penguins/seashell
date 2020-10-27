@@ -11,11 +11,9 @@ static const std::map<std::string, command> commands{{"ls", seashell::ls},
                                                      {"mkdir", seashell::mkdir},
                                                      {"cp", seashell::copy},
                                                      {"rmdir", seashell::rmdir},
-													 {"cd", seashell::cd},
-													 {"exit", seashell::exit},
-													 {"help", seashell::help}
-													 
-													 };
+						     {"cd", seashell::cd},
+						     {"exit", seashell::exit},
+						     {"help", seashell::help}};
 
 static std::string first_word(const std::string & input) {
     static constexpr auto * whitespace = " \t\n\v\f";

@@ -1,0 +1,4 @@
+- made cd
+- made exit
+- made help
+
